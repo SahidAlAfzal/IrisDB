@@ -22,6 +22,7 @@ public:
     void WritePage(int page_id, const char* page_data);
     void ReadPage(int page_id, char* page_data);
     int GetFileSize();
+    int AllocatePage();
 
 };
 #endif

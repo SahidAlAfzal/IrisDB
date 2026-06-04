@@ -59,3 +59,10 @@ int DiskManager::GetFileSize() {
 }
 
 
+int DiskManager::AllocatePage() {
+    int new_page_id = num_pages;
+    num_pages++; 
+    return new_page_id;   // the new page will be allocated at the end of the file, so its page_id is num_pages
+}
+
+
