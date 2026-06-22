@@ -17,7 +17,11 @@ Slot* SlottedPage::GetSlot(uint16_t slot_id) {
 
 
 
-SlottedPage::SlottedPage(int page_id){
+SlottedPage::SlottedPage(char* buffer_pool_frame){
+    this->page_data = buffer_pool_frame;
+}
+
+void SlottedPage::Init(int page_id){
     memset(page_data, 0, PAGE_SIZE);
     PageHeader* header = GetHeader();
     header->page_id = page_id;                                // 0-3
@@ -27,8 +31,6 @@ SlottedPage::SlottedPage(int page_id){
     header->free_space_start = PAGE_SIZE;                  // 12-13
     header->free_space_end = sizeof(PageHeader);          // size of header is 16 bytes (0-15)
 }
-
-
 
 
 bool SlottedPage::InsertTuple(const char* tuple_data, uint16_t tuple_size){
@@ -64,12 +66,39 @@ bool SlottedPage::InsertTuple(const char* tuple_data, uint16_t tuple_size){
 
 
 bool SlottedPage::deleteTuple(uint16_t slot_id){
+    PageHeader* header = GetHeader();
+    
+    // 1. Boundary check!
+    if (slot_id >= header->num_of_tuples) {
+        return false; 
+    }
 
+
+    // 2. Mark delete 
+    Slot* target_slot = GetSlot(slot_id);
+    if(target_slot->is_deleted == true) return false;   // already deleted
+
+    target_slot->is_deleted = true;
+    return true;
 }
 
 
-bool SlottedPage::getTuple(u_int16_t slot_id){
+char* SlottedPage::getTuple(u_int16_t slot_id){
+    PageHeader* header = GetHeader();
+    
+    // 1. Boundary check!
+    if (slot_id >= header->num_of_tuples) {
+        return nullptr; 
+    }
 
+
+    // 2. Find the slot
+    Slot* target_slot = GetSlot(slot_id);
+    if(target_slot->is_deleted == true) return nullptr;
+
+    //char* tuple_data = reinterpret_cast<char*>(page_data + target_slot->tuple_offset);
+
+    return page_data + target_slot->tuple_offset;
 }
 
 
