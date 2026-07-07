@@ -6,8 +6,7 @@
 #include<utility>
 #include "Slot.h"
 #include "page_header.h"
-
-const int PAGE_SIZE = 4096;
+#include "../Buffer/Page.h"
 
 class SlottedPage {
 private:

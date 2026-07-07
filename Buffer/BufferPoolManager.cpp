@@ -1,9 +1,6 @@
 #include<iostream>
 #include "BufferPoolManager.h"
 
-const int POOL_SIZE = 100;
-const int PAGE_SIZE = 4096;
-
 
 BufferPoolManager::BufferPoolManager(){
     disk_manager = new DiskManager("test.db");

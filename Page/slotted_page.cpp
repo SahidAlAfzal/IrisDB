@@ -3,7 +3,6 @@
 #include<utility>
 #include "slotted_page.h"
 
-const int PAGE_SIZE = 4096;
 
 PageHeader* SlottedPage::GetHeader() {
     return reinterpret_cast<PageHeader*>(this->page_data);
