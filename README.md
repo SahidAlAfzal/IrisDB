@@ -11,21 +11,22 @@ IrisDB is an ongoing, educational project designed to deepen my understanding of
 
 The engine is being designed with a modular architecture, focusing on standard RDBMS components.
 
-### 1. Disk Space Manager (Current Focus)
+### 1. Disk Space Manager (Implemented)
 - Manages the allocation and deallocation of pages on disk.
 - Handles raw File I/O operations to read/write fixed-size pages.
 
-### 2. Buffer Pool Manager (In Progress)
+### 2. Buffer Pool Manager (Implemented)
 - Manages moving physical pages back and forth from main memory to disk.
-- Implementing an LRU (Least Recently Used) replacement policy to optimize memory overhead.
-- Ensuring thread-safe access to cached pages.
+- Implements an LRU (Least Recently Used) replacement policy to optimize memory overhead.
 
-### 3. Access Methods (Planned)
-- Designing B+ Tree indexing for highly optimized `O(log n)` data retrieval and range queries.
-- Implementing page-level layouts (slotted page architecture) for storing variable-length records.
+### 3. Access Methods & Indexing (Implemented)
+- Page-level layouts using a slotted page architecture for storing variable-length records.
+- On-disk B+ Tree indexing supporting highly optimized `O(log n)` data retrieval.
+- Fully functional CLI that bridges inserts and selects through the Buffer Pool and B+ Tree index.
 
-### 4. Concurrency Control (Planned)
+### 4. Concurrency Control & Recovery (Planned)
 - Implementing latches (Reader-Writer locks) to ensure thread safety and prevent race conditions during simultaneous page access.
+- Write-Ahead Logging (WAL) and recovery mechanisms for data durability (ACID compliance).
 
 ## 🛠️ Tech Stack
 * **Language:** C++ (Modern C++17/20)
