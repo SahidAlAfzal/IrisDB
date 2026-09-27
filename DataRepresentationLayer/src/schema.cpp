@@ -1,4 +1,4 @@
-#include "include/schema.h"
+#include "../include/schema.h"
 
 Schema::Schema(const std::vector<Column>& columns, uint32_t tuple_length) {
     columns_ = columns;

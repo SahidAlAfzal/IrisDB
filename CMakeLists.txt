@@ -21,7 +21,14 @@ set(SOURCES
     indexing/b_plus_tree_page.cpp
     indexing/b_plus_internal_page.cpp
     indexing/b_plus_leaf_page.cpp
+    DataRepresentationLayer/src/column.cpp
+    DataRepresentationLayer/src/schema.cpp
+    DataRepresentationLayer/src/value.cpp
+    DataRepresentationLayer/src/tuple.cpp
 )
 
 # Tell CMake to compile those sources into an executable named 'irisdb'
 add_executable(irisdb ${SOURCES})
+
+# Add include directories so files can find headers like "include/column.h"
+target_include_directories(irisdb PRIVATE DataRepresentationLayer)

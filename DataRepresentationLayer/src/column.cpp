@@ -1,4 +1,4 @@
-#include "include/column.h"
+#include "../include/column.h"
 
 Column::Column(std::string name, TypeId type, uint32_t length) {
     column_name_ = name;

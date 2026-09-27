@@ -11,7 +11,10 @@ struct PageHeader {
 
     uint16_t free_space_start;    // 12-13
     uint16_t free_space_end;      // 14-15
-    
+
     // No need to make array of slots, as size is not known. keeping inserting Slot as data grows
     // starts from 16 bytes
+
+    uint32_t prev_page_id;     // for heap table implementation (using doubly linkedlist)
+    uint32_t next_page_id;     // for heap table implementation
 };

@@ -1,0 +1,3 @@
+/Users/sahidalafzal/Desktop/MyDataBase/CMakeFiles/irisdb.dir
+/Users/sahidalafzal/Desktop/MyDataBase/CMakeFiles/edit_cache.dir
+/Users/sahidalafzal/Desktop/MyDataBase/CMakeFiles/rebuild_cache.dir

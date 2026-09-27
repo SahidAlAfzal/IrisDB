@@ -19,12 +19,17 @@ The engine is being designed with a modular architecture, focusing on standard R
 - Manages moving physical pages back and forth from main memory to disk.
 - Implements an LRU (Least Recently Used) replacement policy to optimize memory overhead.
 
-### 3. Access Methods & Indexing (Implemented)
+### 3. Data Representation & Page Layouts (Implemented)
+- Flexible serialization/deserialization of Tuples and Values based on dynamic Schemas.
 - Page-level layouts using a slotted page architecture for storing variable-length records.
-- On-disk B+ Tree indexing supporting highly optimized `O(log n)` data retrieval.
-- Fully functional CLI that bridges inserts and selects through the Buffer Pool and B+ Tree index.
+- Unordered Heap Tables acting as a doubly-linked list of pages for full table scans and storage.
 
-### 4. Concurrency Control & Recovery (Planned)
+### 4. Access Methods & Indexing (Implemented)
+- On-disk B+ Tree indexing supporting highly optimized `O(log n)` data retrieval.
+- Internal and Leaf nodes utilizing Buffer Pool Manager for scale-out performance.
+- Fully functional API that bridges inserts and selects through the Buffer Pool and B+ Tree index.
+
+### 5. Concurrency Control & Recovery (Planned)
 - Implementing latches (Reader-Writer locks) to ensure thread safety and prevent race conditions during simultaneous page access.
 - Write-Ahead Logging (WAL) and recovery mechanisms for data durability (ACID compliance).
 
